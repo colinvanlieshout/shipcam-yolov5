@@ -3,4 +3,4 @@ notes
 
 
 #training
-python train.py --img 1024 --batch 8 --epochs 10 --data shipcam.yaml --cfg models/yolov5s.yaml --name shipcam_model
+
