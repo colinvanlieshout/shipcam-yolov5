@@ -1,0 +1,5 @@
+  train: shipcamdata/images/train
+  val: shipcamdata/images/validation
+  nc: 1
+  names: ["floating_object"]
+

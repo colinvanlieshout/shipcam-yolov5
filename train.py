@@ -31,6 +31,9 @@ from utils.general import (
 from utils.google_utils import attempt_download
 from utils.torch_utils import ModelEMA, select_device, intersect_dicts
 
+#has been added to avoid an intel error from conflicting installations
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+
 logger = logging.getLogger(__name__)
 
 
@@ -218,6 +221,7 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
                 'Starting training for %g epochs...' % (imgsz, imgsz_test, dataloader.num_workers, log_dir, epochs))
     for epoch in range(start_epoch, epochs):  # epoch ------------------------------------------------------------------
         model.train()
+        # model.train(args={'fp16': False})
 
         # Update image weights (optional)
         if opt.image_weights:
