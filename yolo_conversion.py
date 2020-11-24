@@ -10,6 +10,10 @@ from math import floor, ceil
 import cv2
 
 
+DATA_PATH = "C:/Users/clieshou/Documents/Sogeti/The Ocean Cleanup/Plasticdebris_data"
+OUTPUT_PATH = "C:/Users/clieshou/PycharmProjects/yolov5/shipcamdata_yolo"
+label_file_name = "labels_split.csv"
+
 def image_data_to_yolo(image_data ,data_type="train"):
     """
     
@@ -60,11 +64,13 @@ def iterator(data, DATA_PATH, OUTPUT_PATH, data_type):
         store_yolo_data(yolo_data,DATA_PATH, OUTPUT_PATH, data_type, image_name)
 
 if __name__ == "__main__":
-    DATA_PATH = "C:/Users/clieshou/Documents/Sogeti/The Ocean Cleanup/Plasticdebris_data"
-    OUTPUT_PATH = "C:/Users/clieshou/PycharmProjects/yolov5/shipcamdata_yolo"
-    
+   
+    #check if output path exists. if it doesn't create it.
+    if not os.path.exists(OUTPUT_PATH):
+        os.makedirs(OUTPUT_PATH)
+
     #read and filter shipcam
-    df = pd.read_csv(os.path.join(DATA_PATH, "labels_split.csv"), delimiter=';')
+    df = pd.read_csv(os.path.join(DATA_PATH, label_file_name), delimiter=';')
     df = df[df['type'] == 'Shipcam'].reset_index(drop=True)
 
     #combines the coordinates into a list
