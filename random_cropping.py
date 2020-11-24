@@ -176,6 +176,10 @@ if __name__ == "__main__":
     df['filename'] = df['filename'].str.lower()
     df_crops = pd.DataFrame(columns = list(df))
 
+    #check if output folder exists, if not, create it
+    if not os.path.exists(OUTPUT_PATH):
+        os.makedirs(OUTPUT_PATH)
+
     for image_path in image_paths:
         #replace the double back slash to make sure it also works on not-windows machines
         image_name = image_path.replace('\\', '/').split('/')[-1]
