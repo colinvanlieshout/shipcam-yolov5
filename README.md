@@ -1,9 +1,9 @@
-So far:
-- Created a script to convert our data to the right format, find in munge_data.py.
-- Trained YOLOv5s (small) now for 10 epochs locally, takes 45 minutes per epoch. Should try on GPU.
+Data processing scripts to run for specific tasks:
+- random_cropping.py: create random crops containing boundings boxes for specified image size to be used for training
+- yolo_conversion.py: convert a set of images with labels in a csv file to yolo format (images with text documents for each image)
+- create_bb_crops.py: crop the bounding boxes out of the images, to be used for deep image blending
+- create_empty_crops.py: create random crops of images not containing any plastics
 
-Todo:
-- Make script such that we can get crops from the images for each object. Now I am just saying they are 1028, not sure what that influences, maybe it downsamples 
 
 # Some interesting stuff from the original repo
 
